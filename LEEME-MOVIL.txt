@@ -18,8 +18,15 @@ CORRECCIONES DE ESTA VERSIÓN (v3 · auditoría de robustez móvil)
   navegador viejo no soporta <dialog> (shim de respaldo).
 - La app nunca queda "muerta" por un error puntual de un handler (captura tolerante).
 - Escape cierra drawers/menú también con teclado en móvil.
-- Service Worker: caché v2 con limpieza de versiones viejas y skipWaiting, para que la
+- PARIDAD RESPONSIVE (móvil = mismo contenido que escritorio):
+  * WhatsApp: ahora se ve la LISTA DE CHATS + la conversación + el panel de CONTEXTO
+    (antes en móvil solo aparecía la conversación).
+  * Tiendanube / Mercado Libre: el menú lateral (Inicio, Ventas, Productos, Clientes,
+    Marketing) se muestra como barra horizontal desplazable (antes estaba oculto).
+  * Botones "Simular día real" y "Reiniciar" ahora disponibles dentro del menú ☰ en móvil.
+- Service Worker: caché v3 con limpieza de versiones viejas y skipWaiting, para que la
   versión nueva se publique sin quedar cacheada una anterior en el teléfono.
+  (Si en un teléfono quedó una versión vieja: cerrar la pestaña y volver a abrir la URL.)
 
 VERIFICADO (viewport 375x812 y desktop)
 - Login, cambio entre las 10 vistas, checkout, notificaciones, menú ☰ y drawer de
