@@ -1,0 +1,44 @@
+NÚCLEO COMMERCE OS — VERSIÓN MOBILE FIX v3
+
+IMPORTANTE
+1. Para usarla en un móvil, la forma fiable es publicarla como URL HTTPS.
+2. Subí TODOS los archivos de esta carpeta a la raíz de un repositorio GitHub Pages.
+3. GitHub > Settings > Pages > Deploy from branch > main > /root.
+4. Abrí la URL resultante en Safari o Chrome.
+
+CORRECCIONES DE ESTA VERSIÓN (v3 · auditoría de robustez móvil)
+- Touch en iOS Safari: se agregó cursor:pointer + touch-action:manipulation a TODOS
+  los elementos con onclick (div/tr/aside no nativos). iOS no dispara el "click" en
+  esos elementos sin cursor:pointer — era la causa de "algunas acciones no responden".
+- Drawer de Fabricación (Add-on): estaba por debajo del header (z-index 141 < 220) y en
+  móvil el header tapaba su botón × y las acciones superiores. Ahora va por encima
+  (scrim 300 / drawer 301) y se cierra y opera bien.
+- Backdrops (notificaciones y fabricación): ahora cierran al tocar (cursor:pointer).
+- <dialog>.showModal() tolerante: no se rompe si el modal ya estaba abierto o si un
+  navegador viejo no soporta <dialog> (shim de respaldo).
+- La app nunca queda "muerta" por un error puntual de un handler (captura tolerante).
+- Escape cierra drawers/menú también con teclado en móvil.
+- Service Worker: caché v2 con limpieza de versiones viejas y skipWaiting, para que la
+  versión nueva se publique sin quedar cacheada una anterior en el teléfono.
+
+VERIFICADO (viewport 375x812 y desktop)
+- Login, cambio entre las 10 vistas, checkout, notificaciones, menú ☰ y drawer de
+  Fabricación: abren y todos sus controles responden al toque.
+- Sin errores JavaScript. Sin scroll horizontal.
+- Navegación superior siempre visible y usable; queda fija al hacer scroll.
+
+CORRECCIONES DE VERSIONES ANTERIORES
+- Menú principal siempre visible ARRIBA.
+- Barra horizontal desplazable con el dedo.
+- Botón ☰ para ver todos los módulos sin deslizar.
+- Login tolerante a navegadores que bloquean sessionStorage.
+- Persistencia opcional: si localStorage está bloqueado, la demo sigue en memoria.
+- Botones y formularios adaptados a touch.
+
+ACCESO DEMO
+demo@nucleo.ar
+demo2026
+
+NOTA SOBRE WHATSAPP / ARCHIVOS
+El visor de adjuntos de WhatsApp, Telegram, Gmail o la vista previa de Archivos puede
+mostrar HTML sin ejecutar JavaScript. Para un cliente, compartir siempre la URL publicada.
