@@ -185,6 +185,26 @@ html{-webkit-text-size-adjust:100%} body{overscroll-behavior-y:none} button,a,in
   .nav button,.icon-btn,.btn,.factory-tab,.wa-botbar button,.mobile-menu-grid button{min-height:40px}
   .close,.mf-x{min-width:40px;min-height:40px}
 }
+/* ===== PARIDAD RESPONSIVE: mostrar en móvil lo que estaba oculto ===== */
+@media(max-width:760px){
+  /* WhatsApp: lista de chats + conversación + contexto, apilados y scrolleables */
+  .wa-app{padding:0!important}
+  .wa-window{height:auto!important;min-height:calc(100dvh - 106px);display:flex!important;flex-direction:column!important;grid-template-columns:none!important;border-radius:0!important;max-height:none!important}
+  .wa-left{display:flex!important;max-height:36vh;border-right:0;border-bottom:1px solid #ddd}
+  .wa-chat{min-height:56vh}
+  .messages{min-height:260px}
+  .wa-context{display:block!important;border-left:0;border-top:1px solid #ddd}
+  /* Plataformas (Tiendanube / Mercado Libre): navegación lateral como barra horizontal */
+  .platform-layout{display:block!important}
+  .platform-side{display:flex!important;flex-direction:row!important;gap:6px!important;min-height:auto!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;border-right:0!important;border-bottom:1px solid #e1e1e1;padding:9px 10px!important;position:sticky;top:106px;background:#fff;z-index:60}
+  .platform-side .side-item{white-space:nowrap;flex:0 0 auto}
+  /* Web propia: navegación de la tienda visible y desplazable */
+  .store-links{display:flex!important;gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:9px;padding-bottom:2px}
+  /* Acciones dentro del menú ☰ */
+  .mobile-menu-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+  .mobile-menu-actions .btn{width:100%;min-height:46px}
+}
+@media(max-width:390px){.platform-side{top:104px}}
 </style>
 </head>
 <body>
@@ -224,6 +244,10 @@ html{-webkit-text-size-adjust:100%} body{overscroll-behavior-y:none} button,a,in
     <button onclick="showView('operations');toggleMobileMenu(false)"><b>Operación</b><small>Pedidos y devoluciones</small></button>
     <button onclick="showView('automations');toggleMobileMenu(false)"><b>Automatizaciones</b><small>Eventos y workflows</small></button>
     <button onclick="showView('production');toggleMobileMenu(false)" class="factory-mobile-link"><b>Fabricación</b><small>Add-on opcional</small></button>
+  </div>
+  <div class="mobile-menu-actions">
+    <button class="btn dark" onclick="runFullDay();toggleMobileMenu(false)">▶ Simular día real</button>
+    <button class="btn" onclick="resetDemo();toggleMobileMenu(false)">Reiniciar demo</button>
   </div>
 </div>
 
